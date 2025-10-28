@@ -213,6 +213,14 @@ a:hover {
     align-items: center;
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero-text {
+    text-align: left;
+    padding-left: 2rem;
 }
 
 .hero-title {
@@ -1962,6 +1970,12 @@ cite {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 3rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-text {
+        text-align: center;
+        padding-left: 0;
     }
     
     .about-grid {

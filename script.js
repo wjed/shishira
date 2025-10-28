@@ -10,19 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollY = window.scrollY;
         
         if (scrollY > scrollThreshold && !bookOpened) {
+            // Prevent further scrolling during animation
+            document.body.style.overflow = 'hidden';
+            
             // Start opening the book immediately
             bookCover.classList.add('opening');
             bookOpened = true;
             
-            // Reset scroll position to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Reset scroll position to top immediately
+            window.scrollTo({ top: 0, behavior: 'auto' });
             
             // Hide entire book container quickly
             setTimeout(() => {
                 bookContainer.classList.add('opened');
                 
-                // Remove from DOM after transition
+                // Re-enable scrolling and remove from DOM
                 setTimeout(() => {
+                    document.body.style.overflow = 'auto';
                     bookContainer.style.display = 'none';
                 }, 800);
             }, 1200);
