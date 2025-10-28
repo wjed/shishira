@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Shishira Nakka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Shishira Nakka</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Let's Connect</h1>
+            <p class="page-subtitle">Ready to start a conversation</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-intro">
+                        <h2>Get In Touch</h2>
+                        <p>
+                            I'm always excited to connect with fellow writers, marketing professionals, and anyone 
+                            passionate about storytelling. Whether you're looking for collaboration, have a project 
+                            in mind, or just want to chat about the intersection of literature and marketing, 
+                            I'd love to hear from you.
+                        </p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Email</h3>
+                                <p>Best for project inquiries and professional opportunities</p>
+                                <a href="mailto:shishira@example.com">shishira@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>LinkedIn</h3>
+                                <p>Connect with me professionally and see my latest updates</p>
+                                <a href="https://linkedin.com/in/shishira-nakka" target="_blank">linkedin.com/in/shishira-nakka</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Location</h3>
+                                <p>Currently based in Harrisonburg, Virginia</p>
+                                <span>James Madison University</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="availability">
+                        <h3><i class="fas fa-clock"></i> Availability</h3>
+                        <p>
+                            I typically respond to emails within 24-48 hours. For urgent inquiries, 
+                            LinkedIn messaging might be faster. I'm always open to coffee chats, 
+                            virtual meetings, or collaborative opportunities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <div class="form-container">
+                        <h2>Send a Message</h2>
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="collaboration">Collaboration Opportunity</option>
+                                    <option value="writing">Writing Project</option>
+                                    <option value="marketing">Marketing Consultation</option>
+                                    <option value="speaking">Speaking Engagement</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Tell me about your project, idea, or how I can help..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Areas -->
+    <section class="collaboration-section">
+        <div class="container">
+            <h2 class="section-title">Areas of Collaboration</h2>
+            <div class="collaboration-grid">
+                <div class="collaboration-card">
+                    <div class="collab-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Content Creation</h3>
+                    <p>Blog posts, articles, social media content, and copywriting that tells your story authentically.</p>
+                    <ul>
+                        <li>Blog writing</li>
+                        <li>Social media content</li>
+                        <li>Website copy</li>
+                        <li>Email campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Marketing Strategy</h3>
+                    <p>Strategic communication planning that connects with your audience and drives engagement.</p>
+                    <ul>
+                        <li>Brand storytelling</li>
+                        <li>Content strategy</li>
+                        <li>Campaign development</li>
+                        <li>Audience analysis</li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Consulting</h3>
+                    <p>Strategic insights and problem-solving for businesses, nonprofits, and creative projects.</p>
+                    <ul>
+                        <li>Communication audits</li>
+                        <li>Brand positioning</li>
+                        <li>Content optimization</li>
+                        <li>Strategic planning</li>
+                    </ul>
+                </div>
+
+                <div class="collaboration-card">
+                    <div class="collab-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Speaking & Workshops</h3>
+                    <p>Presentations on writing, marketing, and the power of authentic storytelling.</p>
+                    <ul>
+                        <li>Writing workshops</li>
+                        <li>Marketing seminars</li>
+                        <li>Student panels</li>
+                        <li>Industry talks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3><i class="fas fa-question-circle"></i> What types of projects do you take on?</h3>
+                    <p>
+                        I work on a variety of projects including content creation, marketing strategy, copywriting, 
+                        and consulting. I'm particularly drawn to projects that allow for authentic storytelling 
+                        and meaningful connection with audiences.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3><i class="fas fa-clock"></i> What's your typical turnaround time?</h3>
+                    <p>
+                        Turnaround times vary depending on the project scope. For smaller pieces like blog posts 
+                        or social media content, I typically deliver within 3-5 business days. Larger projects 
+                        are discussed on a case-by-case basis.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3><i class="fas fa-graduation-cap"></i> Do you work with students or student organizations?</h3>
+                    <p>
+                        Absolutely! I love collaborating with fellow students and campus organizations. 
+                        I offer special rates for student projects and am always excited to support 
+                        creative endeavors within the university community.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3><i class="fas fa-handshake"></i> How do you approach new collaborations?</h3>
+                    <p>
+                        Every collaboration starts with understanding your goals, audience, and unique voice. 
+                        I believe in transparent communication throughout the process and always aim to 
+                        exceed expectations while staying true to your brand's authentic story.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Shishira Nakka</h4>
+                    <p>Writer & Marketing Professional</p>
+                    <p>James Madison University</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="about.html">About</a>
+                    <a href="experience.html">Experience</a>
+                    <a href="writing.html">Writing</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://linkedin.com/in/shishira-nakka" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="mailto:shishira@example.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shishira Nakka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
