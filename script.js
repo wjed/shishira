@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
             bookCover.classList.add('opening');
             bookOpened = true;
             
+            // Reset scroll position to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             // Hide entire book container quickly
             setTimeout(() => {
                 bookContainer.classList.add('opened');
