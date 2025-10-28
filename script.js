@@ -1,48 +1,67 @@
-// Page Loading Animation
+// Book Opening Animation
 document.addEventListener('DOMContentLoaded', function() {
-    const pageLoader = document.getElementById('pageLoader');
-    const typewriterText = document.getElementById('typewriterText');
+    const bookContainer = document.getElementById('bookContainer');
+    const bookCover = document.getElementById('bookCover');
+    const bookFirstPage = document.getElementById('bookFirstPage');
     
-    if (pageLoader && typewriterText) {
-        const phrases = [
-            "Once upon a time...",
-            "In a world of words and wonder...",
-            "A storyteller emerged...",
-            "Welcome to Shishira's story."
-        ];
+    let bookOpened = false;
+    let scrollThreshold = 100; // Pixels to scroll before book starts opening
+    
+    function handleBookAnimation() {
+        const scrollY = window.scrollY;
         
-        let phraseIndex = 0;
-        let charIndex = 0;
-        
-        function typeWriter() {
-            if (phraseIndex < phrases.length) {
-                if (charIndex < phrases[phraseIndex].length) {
-                    typewriterText.textContent += phrases[phraseIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWriter, 80);
-                } else {
-                    setTimeout(() => {
-                        typewriterText.textContent = '';
-                        charIndex = 0;
-                        phraseIndex++;
-                        if (phraseIndex < phrases.length) {
-                            setTimeout(typeWriter, 500);
-                        } else {
-                            // Animation complete, hide loader
-                            setTimeout(() => {
-                                pageLoader.classList.add('hidden');
-                                setTimeout(() => {
-                                    pageLoader.style.display = 'none';
-                                }, 800);
-                            }, 1000);
-                        }
-                    }, 1500);
-                }
-            }
+        if (scrollY > scrollThreshold && !bookOpened) {
+            // Start opening the book
+            bookCover.classList.add('opening');
+            
+            // Show first page after cover starts opening
+            setTimeout(() => {
+                bookFirstPage.classList.add('visible');
+            }, 1000);
+            
+            // Hide entire book container after animation completes
+            setTimeout(() => {
+                bookContainer.classList.add('opened');
+                bookOpened = true;
+                
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    bookContainer.style.display = 'none';
+                }, 1000);
+            }, 4000);
         }
+    }
+    
+    // Only show book animation on homepage
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        window.addEventListener('scroll', handleBookAnimation);
         
-        // Start animation after book opens
-        setTimeout(typeWriter, 2000);
+        // Also trigger on any scroll attempt (for mobile)
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            
+            if (deltaY > 30 && !bookOpened) { // Swipe up
+                handleBookAnimation();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if ((e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') && !bookOpened) {
+                window.scrollTo({ top: scrollThreshold + 10, behavior: 'smooth' });
+            }
+        });
+    } else {
+        // Hide book on other pages
+        if (bookContainer) {
+            bookContainer.style.display = 'none';
+        }
     }
 
     // Mobile Navigation Toggle
