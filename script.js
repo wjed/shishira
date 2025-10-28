@@ -1,5 +1,51 @@
-// Mobile Navigation Toggle
+// Page Loading Animation
 document.addEventListener('DOMContentLoaded', function() {
+    const pageLoader = document.getElementById('pageLoader');
+    const typewriterText = document.getElementById('typewriterText');
+    
+    if (pageLoader && typewriterText) {
+        const phrases = [
+            "Once upon a time...",
+            "In a world of words and wonder...",
+            "A storyteller emerged...",
+            "Welcome to Shishira's story."
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        
+        function typeWriter() {
+            if (phraseIndex < phrases.length) {
+                if (charIndex < phrases[phraseIndex].length) {
+                    typewriterText.textContent += phrases[phraseIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, 80);
+                } else {
+                    setTimeout(() => {
+                        typewriterText.textContent = '';
+                        charIndex = 0;
+                        phraseIndex++;
+                        if (phraseIndex < phrases.length) {
+                            setTimeout(typeWriter, 500);
+                        } else {
+                            // Animation complete, hide loader
+                            setTimeout(() => {
+                                pageLoader.classList.add('hidden');
+                                setTimeout(() => {
+                                    pageLoader.style.display = 'none';
+                                }, 800);
+                            }, 1000);
+                        }
+                    }, 1500);
+                }
+            }
+        }
+        
+        // Start animation after book opens
+        setTimeout(typeWriter, 2000);
+    }
+
+    // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
@@ -329,7 +375,42 @@ function addSearchFunctionality() {
 // Initialize search functionality
 document.addEventListener('DOMContentLoaded', addSearchFunctionality);
 
-// Add CSS for fade-in animation
+// Add page transition effects
+function addPageTransitions() {
+    // Add page transition overlay
+    const transitionOverlay = document.createElement('div');
+    transitionOverlay.className = 'page-transition';
+    transitionOverlay.innerHTML = `
+        <div class="transition-content">
+            <div class="quill-animation">
+                <i class="fas fa-feather-alt"></i>
+            </div>
+            <p>Turning the page...</p>
+        </div>
+    `;
+    document.body.appendChild(transitionOverlay);
+    
+    // Handle internal navigation
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.hostname === window.location.hostname) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                
+                transitionOverlay.classList.add('active');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800);
+            }
+        });
+    });
+}
+
+// Initialize page transitions
+document.addEventListener('DOMContentLoaded', addPageTransitions);
+
+// Add CSS for fade-in animation and transitions
 const style = document.createElement('style');
 style.textContent = `
     .fade-in {
@@ -346,6 +427,49 @@ style.textContent = `
     .navbar.scrolled {
         background: rgba(247, 243, 233, 0.98);
         box-shadow: 0 2px 20px rgba(44, 24, 16, 0.1);
+    }
+    
+    .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f7f3e9 0%, #f4f1e8 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+    }
+    
+    .page-transition.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .transition-content {
+        text-align: center;
+        color: #2c1810;
+    }
+    
+    .quill-animation {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: quillWrite 1s ease-in-out infinite alternate;
+    }
+    
+    .transition-content p {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.2rem;
+        font-style: italic;
+    }
+    
+    @keyframes quillWrite {
+        0% { transform: rotate(-10deg) translateY(0px); }
+        100% { transform: rotate(10deg) translateY(-10px); }
     }
     
     @media (max-width: 768px) {

@@ -369,14 +369,205 @@ a:hover {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(5deg); }
+    66% { transform: translateY(-25px) rotate(-3deg); }
+}
+
+/* Add ink drop animation */
+@keyframes inkDrop {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Paper texture animation */
+@keyframes paperRustle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(0.5deg) scale(1.01); }
+    75% { transform: rotate(-0.5deg) scale(0.99); }
+}
+
+/* Add writing animation to cards */
+.publication-card,
+.role-card,
+.category-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.publication-card::before,
+.role-card::before,
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(212, 175, 55, 0.1) 50%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.publication-card:hover::before,
+.role-card:hover::before,
+.category-card:hover::before {
+    opacity: 1;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(200%) rotate(45deg); }
+}
+
+/* Page Loader Animation */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--warm-cream) 0%, var(--parchment) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.book-opening {
+    perspective: 1000px;
+    margin-bottom: 3rem;
+}
+
+.book-cover {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: bookOpen 3s ease-in-out;
+}
+
+.book-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--deep-burgundy), var(--primary-dark));
+    transform-origin: left center;
+    border-radius: 0 5px 5px 0;
+}
+
+.book-front {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--deep-burgundy), #8b3a3a);
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform-origin: left center;
+    animation: coverOpen 3s ease-in-out;
+}
+
+.book-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.book-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.typewriter-container {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    min-height: 2rem;
+}
+
+.typewriter-text {
+    margin: 0;
+    margin-right: 0.25rem;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    font-weight: bold;
+    color: var(--deep-burgundy);
+}
+
+@keyframes bookOpen {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(-15deg);
+    }
+    100% {
+        transform: rotateY(-25deg);
+    }
+}
+
+@keyframes coverOpen {
+    0% {
+        transform: rotateY(0deg);
+    }
+    60% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(-120deg);
+    }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 /* Page Hero */
 .page-hero {
     padding: 140px 0 80px;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--deep-burgundy) 100%);
+    background: linear-gradient(135deg, var(--sage-green) 0%, var(--primary-dark) 100%);
     color: var(--white);
     text-align: center;
     position: relative;
@@ -390,7 +581,7 @@ a:hover {
     right: 0;
     bottom: 0;
     background-image: 
-        radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
     opacity: 0.8;
 }
 
@@ -399,14 +590,17 @@ a:hover {
     margin-bottom: 1rem;
     position: relative;
     z-index: 2;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .page-subtitle {
     font-family: var(--font-sans);
     font-size: 1.3rem;
-    opacity: 0.9;
+    opacity: 0.95;
     position: relative;
     z-index: 2;
+    color: var(--warm-cream);
 }
 
 /* Section Styles */
@@ -430,6 +624,24 @@ section {
     height: 3px;
     background: linear-gradient(90deg, var(--gold-accent), var(--deep-burgundy));
     border-radius: 2px;
+}
+
+/* Fix section title contrast on dark backgrounds */
+.quote-section .section-title,
+.writing-process .section-title,
+.cta-section .section-title,
+.writing-cta .section-title,
+.contact .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.quote-section .section-title::after,
+.writing-process .section-title::after,
+.cta-section .section-title::after,
+.writing-cta .section-title::after,
+.contact .section-title::after {
+    background: linear-gradient(90deg, var(--gold-accent), var(--warm-cream));
 }
 
 /* Featured Work */
