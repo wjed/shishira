@@ -2,33 +2,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     const bookContainer = document.getElementById('bookContainer');
     const bookCover = document.getElementById('bookCover');
-    const bookFirstPage = document.getElementById('bookFirstPage');
     
     let bookOpened = false;
-    let scrollThreshold = 100; // Pixels to scroll before book starts opening
+    let scrollThreshold = 50; // Pixels to scroll before book starts opening
     
     function handleBookAnimation() {
         const scrollY = window.scrollY;
         
         if (scrollY > scrollThreshold && !bookOpened) {
-            // Start opening the book
+            // Start opening the book immediately
             bookCover.classList.add('opening');
+            bookOpened = true;
             
-            // Show first page after cover starts opening
-            setTimeout(() => {
-                bookFirstPage.classList.add('visible');
-            }, 1000);
-            
-            // Hide entire book container after animation completes
+            // Hide entire book container quickly
             setTimeout(() => {
                 bookContainer.classList.add('opened');
-                bookOpened = true;
                 
                 // Remove from DOM after transition
                 setTimeout(() => {
                     bookContainer.style.display = 'none';
-                }, 1000);
-            }, 4000);
+                }, 800);
+            }, 1200);
         }
     }
     
@@ -46,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const touchY = e.touches[0].clientY;
             const deltaY = touchStartY - touchY;
             
-            if (deltaY > 30 && !bookOpened) { // Swipe up
+            if (deltaY > 20 && !bookOpened) { // Swipe up
                 handleBookAnimation();
             }
         });
