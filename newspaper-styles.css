@@ -524,6 +524,12 @@ body {
     color: var(--newspaper-gray);
 }
 
+.footer-section p i {
+    margin-right: 0.5rem;
+    color: var(--accent-red);
+    width: 16px;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 1rem;
