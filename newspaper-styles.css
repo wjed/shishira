@@ -201,6 +201,23 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Enhanced desktop two-column layout */
+@media (min-width: 1000px) {
+    .two-column-layout {
+        gap: 3rem;
+    }
+    
+    .left-column,
+    .right-column {
+        padding-right: 1.5rem;
+    }
+    
+    .right-column {
+        padding-right: 0;
+        padding-left: 1.5rem;
+    }
+}
+
 .left-column,
 .right-column {
     border-right: var(--border-thin);
@@ -758,6 +775,14 @@ button:focus {
     margin-top: 2rem;
 }
 
+/* Better desktop layout for articles */
+@media (min-width: 900px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
 .article-preview {
     background: var(--newspaper-bg);
     border: var(--border-thin);
@@ -1112,5 +1137,59 @@ Individual Article Page Styles */
     
     .rating-text {
         font-size: 1rem;
+    }
+}/* Desktop
+ Enhancements */
+@media (min-width: 1200px) {
+    body {
+        padding: 0 2rem;
+    }
+    
+    .newspaper-title {
+        font-size: 5rem;
+        letter-spacing: 0.3rem;
+    }
+    
+    .headline {
+        font-size: 3rem;
+    }
+    
+    .story-text {
+        column-count: 3;
+        column-gap: 2rem;
+    }
+    
+    .articles-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+    
+    .values-layout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .collab-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    body {
+        max-width: 1400px;
+        padding: 0 3rem;
+    }
+    
+    .newspaper-title {
+        font-size: 6rem;
+    }
+    
+    .story-text {
+        column-count: 3;
+        column-gap: 2.5rem;
+    }
+    
+    .section-padding {
+        padding: 4rem 0;
     }
 }
