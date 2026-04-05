@@ -12,9 +12,9 @@ body {
     line-height: 1.7;
     color: #111;
     background: #fff;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 2rem 3rem;
 }
 
 /* Header */
@@ -118,7 +118,7 @@ blockquote cite {
 /* Articles grid */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
 }
@@ -372,6 +372,7 @@ a:focus, button:focus {
 
 /* Responsive */
 @media (max-width: 700px) {
+    body { padding: 1.5rem 1rem; }
     .site-name { font-size: 2rem; }
     .two-col { grid-template-columns: 1fr; gap: 1.5rem; }
     .articles-grid { grid-template-columns: 1fr; }
